@@ -18,14 +18,12 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "number=" + number +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", genre='" + genre + '\'' +
-                ", subGenre='" + subGenre + '\'' +
-                ", publisher='" + publisher + '\'' +
-                '}';
+        return "Book ID: " + number +
+                ", Title: " + title +
+                ", Author: " + author +
+                ", Genre: " + genre +
+                ", SubGenre: " + subGenre +
+                ", Publisher: " + publisher;
     }
 
     public Book() {
