@@ -56,8 +56,24 @@ public class Library {
         }
     }
 
+    public static void printLoanedBooks() {
+        for (Book book : loanedBooks) {
+            System.out.println(book);
+        }
+    }
+
     public static Book findBook(int id) {
         for (Book book : allBooks
+        ) {
+            if (book.getNumber().equals(String.valueOf(id))) {
+                return book;
+            }
+        }
+        return null;
+    }
+
+    public static Book findLoanedBooks(int id) {
+        for (Book book : loanedBooks
         ) {
             if (book.getNumber().equals(String.valueOf(id))) {
                 return book;
@@ -71,11 +87,11 @@ public class Library {
         allBooks.remove(targetBook);
         loanedBooks.add(targetBook);
         System.out.println("Thanks, you've successfully loaned this book!");
-        System.out.println(loanedBooks);
+        printLoanedBooks();
     }
 
     public static void returnBook(int id) {
-        Book targetBook = findBook(id);
+        Book targetBook = findLoanedBooks(id);
         loanedBooks.remove(targetBook);
         allBooks.add(targetBook);
         System.out.println("Thanks, you've successfully returned this book!");
@@ -87,12 +103,14 @@ public class Library {
         Scanner scanner = new Scanner(System.in);
         String newCustomer = scanner.nextLine();
 
+        int customerChoice = 0;
         while (isLoggedOn) {
             System.out.println("Hi " + newCustomer + ". What would you like to do today?");
             System.out.println("Press 1 to see all the books we carry in this library");
             System.out.println("Press 2 to loan a book");
             System.out.println("Press 3 to return a book");
-            int customerChoice = scanner.nextInt();
+            System.out.println("Press 4 to log out");
+            customerChoice = scanner.nextInt();
             if (customerChoice == 1) {
                 System.out.println("You've chosen option 1");
                 System.out.println("Here's all the books this library carries...");
@@ -108,11 +126,16 @@ public class Library {
             if (customerChoice == 3) {
                 System.out.println("You've chosen option 3");
                 System.out.println("Here is a list of books you can return to the library...");
-                System.out.println(loanedBooks);
-                int bookId =scanner.nextInt();
+                printLoanedBooks();
+                System.out.println("Please enter the book ID number you wish to return...");
+                int bookId = scanner.nextInt();
                 returnBook(bookId);
 
             }
+
+        }
+        if (customerChoice == 4) {
+            System.out.println("Thanks for coming to the library. Have a nice day " + newCustomer + "!");
         }
     }
 
