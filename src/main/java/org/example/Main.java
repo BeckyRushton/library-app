@@ -16,8 +16,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws IOException, CsvException, ParseException {
         Library library = new Library();
-//BookInitialiser.csvToJson();
-//BookInitialiser.init();
+
 Library.enterTheLibrary();
 
 

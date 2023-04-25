@@ -65,8 +65,6 @@ public class BookInitialiser {
             book.setPublisher((String) jsonObject.get("Publisher"));
             Library.allBooks.add(book);
         }
-        for (Book book : Library.allBooks) {
-            System.out.println(book);
-        }
+
     }
 }
